@@ -38,3 +38,12 @@ Gli utenti possono accedere a un elenco dettagliato delle operazioni svolte, inc
 
 - Sezione di apprendimento:
 L'applicazione offre una sezione dedicata all'apprendimento, che comprende articoli che partono dalle basi per i principianti fino ad articoli più avanzati per gli utenti esperti. Gli utenti possono accumulare punti rispondendo a quiz relativi agli articoli, che possono poi utilizzare per ottenere sconti sulle commissioni di transazione o accedere a ICO (Initial Coin Offering) in modo privilegiato.
+
+# API CoinMarketCap
+
+END POINT
+
+Restituisce la lista delle prime 100 criptovalute per market_cap
+
+https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=100&convert=USD&CMC_PRO_API_KEY=API_KEY
+
