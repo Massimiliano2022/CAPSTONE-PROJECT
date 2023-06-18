@@ -22,7 +22,7 @@ Postgres come database per la persistenza dei dati
 L'applicazione offre diverse funzionalità per gli utenti:
 
 - Visualizzazione dei prezzi delle criptovalute:
-L'applicazione utilizza le API di terze parti come CoinMarketCap o CoinGecko per ottenere i prezzi aggiornati delle criptovalute. Utilizza la libreria ApexCharts.js per visualizzare i grafici Candlestick nei diversi timeframe (1H, 4H, Daily, Weekly, Monthly), consentendo agli utenti di monitorare l'andamento dei prezzi.
+L'applicazione utilizza le API di terze parti come CoinMarketCap o CoinGecko per ottenere i prezzi aggiornati delle criptovalute. Utilizza la libreria ApexCharts.js/Charting Library (Trading View) per visualizzare i grafici Candlestick nei diversi timeframe (1H, 4H, Daily, Weekly, Monthly), consentendo agli utenti di monitorare l'andamento dei prezzi.
 
 - Registrazione degli utenti:
 Gli utenti possono registrarsi per creare un account e accedere alle funzionalità complete dell'exchange. La registrazione consente inoltre di effettuare depositi e acquistare criptovalute. Spring Security Web e JSON Web Token (JWT) vengono utilizzati per garantire la sicurezza delle informazioni degli utenti durante il processo di registrazione e accesso.
@@ -38,6 +38,16 @@ Gli utenti possono accedere a un elenco dettagliato delle operazioni svolte, inc
 
 - Sezione di apprendimento:
 L'applicazione offre una sezione dedicata all'apprendimento, che comprende articoli che partono dalle basi per i principianti fino ad articoli più avanzati per gli utenti esperti. Gli utenti possono accumulare punti rispondendo a quiz relativi agli articoli, che possono poi utilizzare per ottenere sconti sulle commissioni di transazione o accedere a ICO (Initial Coin Offering) in modo privilegiato.
+
+# Librerie grafici
+
+ApexCharts.js
+
+https://apexcharts.com/react-chart-demos/candlestick-charts/category-x-axis/
+
+Charting Library (Trading View)
+
+https://www.tradingview.com/charting-library-docs/latest/getting_started/
 
 # API CoinMarketCap
 
