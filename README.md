@@ -41,9 +41,12 @@ L'applicazione offre una sezione dedicata all'apprendimento, che comprende artic
 
 # API CoinMarketCap
 
-END POINT
+END POINT:
 
 Restituisce la lista delle prime 100 criptovalute per market_cap
 
 https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=100&convert=USD&CMC_PRO_API_KEY=API_KEY
 
+DOCUMENTAZIONE:
+
+https://coinmarketcap.com/api/documentation/v1/#operation/getV1CryptocurrencyListingsLatest
