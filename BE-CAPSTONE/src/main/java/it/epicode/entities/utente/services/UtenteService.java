@@ -15,6 +15,8 @@ import it.epicode.entities.utente.Utente;
 import it.epicode.entities.utente.payloads.UtentePayload;
 import it.epicode.entities.utente.payloads.UtenteUpdatePayload;
 import it.epicode.entities.utente.repository.UtenteRepository;
+import it.epicode.entities.wallet.Wallet;
+import it.epicode.entities.wallet.repository.WalletRepository;
 import it.epicode.exceptions.BadRequestException;
 import it.epicode.exceptions.NotFoundException;
 
@@ -23,6 +25,9 @@ public class UtenteService {
 	@Autowired
 	private UtenteRepository utenteRepo;
 
+	@Autowired
+	private WalletRepository walletRepo;
+
 	public Utente create(UtentePayload payload) {
 
 		utenteRepo.findByEmail(payload.getEmail()).ifPresent(user -> {
@@ -30,8 +35,13 @@ public class UtenteService {
 		});
 
 		Utente u = new Utente(payload.getNome(), payload.getCognome(), payload.getEmail(), payload.getPassword());
+		Utente utenteSalvato = utenteRepo.save(u);
 
-		return utenteRepo.save(u);
+		double saldoTotale = 50000;
+		Wallet w = new Wallet(utenteSalvato, saldoTotale);
+		walletRepo.save(w);
+
+		return utenteSalvato;
 	}
 
 	public Utente findByEmail(String email) {
