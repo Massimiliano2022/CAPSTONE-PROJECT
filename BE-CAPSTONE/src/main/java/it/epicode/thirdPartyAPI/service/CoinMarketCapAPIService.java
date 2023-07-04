@@ -88,7 +88,7 @@ public class CoinMarketCapAPIService {
 		double percent_change_1h = Double.valueOf(usdMap.get("percent_change_1h").toString());
 
 		cryptoService.create(symbol, name, price, percent_change_1h);
-		fakeCryptoService.create(symbol, symbol, price, percent_change_1h);
+		fakeCryptoService.create(symbol, name, price, percent_change_1h);
 
 	}
 }
