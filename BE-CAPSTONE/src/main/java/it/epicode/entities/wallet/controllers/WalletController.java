@@ -54,10 +54,7 @@ public class WalletController {
 		walletService.findByIdAndDelete(id);
 	}
 
-	// IMPLEMENTARE ENDPOINT PER WALLET UTENTE CORRENTE
-
 	@GetMapping("/me")
-
 	@PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
 	public Wallet getWalletUtenteCorrente() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
