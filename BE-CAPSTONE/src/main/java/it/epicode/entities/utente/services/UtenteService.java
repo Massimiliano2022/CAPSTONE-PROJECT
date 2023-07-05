@@ -80,7 +80,9 @@ public class UtenteService {
 
 	public void findByIdAndDelete(String id) {
 		Utente u = findById(id);
-
+		Wallet w = walletRepo.findByUtente(u).orElseThrow(
+				() -> new NotFoundException("Wallet non trovato per utente " + u.getNome() + " " + u.getCognome()));
+		walletRepo.delete(w);
 		utenteRepo.delete(u);
 
 	}
