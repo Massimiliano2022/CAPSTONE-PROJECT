@@ -8,5 +8,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class TokenPayload {
 	private String JwtToken;
-	private Utente u;
+	private Utente utente;
 }

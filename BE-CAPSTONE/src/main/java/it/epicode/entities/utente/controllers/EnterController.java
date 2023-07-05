@@ -30,17 +30,17 @@ public class EnterController {
 	@PostMapping("/login")
 	public ResponseEntity<TokenPayload> login(@RequestBody LoginPayload body) {
 
-		Utente u = utenteservice.findByEmail(body.getEmail());
+		Utente utente = utenteservice.findByEmail(body.getEmail());
 
 		String plainPW = body.getPassword();
-		String hashedPW = u.getPassword();
+		String hashedPW = utente.getPassword();
 
 		if (!bcrypt.matches(plainPW, hashedPW))
 			throw new UnauthorizedException("Credenziali non valide");
 
-		String token = JwtTools.createToken(u);
+		String token = JwtTools.createToken(utente);
 
-		return new ResponseEntity<>(new TokenPayload(token, u), HttpStatus.OK);
+		return new ResponseEntity<>(new TokenPayload(token, utente), HttpStatus.OK);
 	}
 
 	@PostMapping("/register")
