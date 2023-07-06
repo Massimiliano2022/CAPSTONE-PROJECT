@@ -125,15 +125,6 @@ public class CryptoRunner implements CommandLineRunner {
 			monthlyCryptoService.create("SAND", "The Sandbox", 0.4190, -21.26, LocalDate.of(2023, 6, 30));
 		}
 
-		if (!cryptoDB.isEmpty() && fakeCryptoDB.isEmpty()) {
-			for (CurrentCryptoData currentCryptoData : cryptoDB) {
-				fakeCurrentCryptoDataService.create(currentCryptoData.getSimbolo(), currentCryptoData.getNome(),
-						currentCryptoData.getPrezzo(),
-						(String.valueOf(currentCryptoData.getPercententuale_variazione_1h())));
-			}
-
-		}
-
 		Thread aggiornaPrezziThread = new Thread(() -> {
 			while (true) {
 				try {

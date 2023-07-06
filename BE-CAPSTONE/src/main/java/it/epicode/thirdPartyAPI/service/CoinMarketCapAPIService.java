@@ -90,10 +90,13 @@ public class CoinMarketCapAPIService {
 		price = Math.round(price * 100) / 100.0;
 		percent_change_1h = Math.round(percent_change_1h * 100) / 100.0;
 
-		String percentualeFormattata = String.valueOf(percent_change_1h);
+		String percentualeFormatted = (percent_change_1h >= 0) ? "+" + percent_change_1h
+				: String.valueOf(percent_change_1h);
+
+		// String percentualeFormattata = String.valueOf(percent_change_1h);
 
 		cryptoService.create(symbol, name, price, percent_change_1h);
-		fakeCryptoService.create(symbol, name, price, percentualeFormattata);
+		fakeCryptoService.create(symbol, name, price, percentualeFormatted);
 
 	}
 }
