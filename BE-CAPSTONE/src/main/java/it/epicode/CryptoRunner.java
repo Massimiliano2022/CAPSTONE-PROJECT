@@ -81,12 +81,12 @@ public class CryptoRunner implements CommandLineRunner {
 
 			// DOT
 			monthlyCryptoService.create("DOT", "Polkadot", 4.300, -21.39, LocalDate.of(2022, 12, 31));
-			monthlyCryptoService.create("DOT", "Polkadot", 0.3903, 45.62, LocalDate.of(2023, 1, 31));
-			monthlyCryptoService.create("DOT", "Polkadot", 0.3518, 1.33, LocalDate.of(2023, 2, 28));
-			monthlyCryptoService.create("DOT", "Polkadot", 0.3989, -0.03, LocalDate.of(2023, 3, 31));
-			monthlyCryptoService.create("DOT", "Polkadot", 0.3955, -7.39, LocalDate.of(2023, 4, 30));
-			monthlyCryptoService.create("DOT", "Polkadot", 0.3744, -9.50, LocalDate.of(2023, 5, 31));
-			monthlyCryptoService.create("DOT", "Polkadot", 0.2867, -2.52, LocalDate.of(2023, 6, 30));
+			monthlyCryptoService.create("DOT", "Polkadot", 6.262, 45.62, LocalDate.of(2023, 1, 31));
+			monthlyCryptoService.create("DOT", "Polkadot", 6.345, 1.33, LocalDate.of(2023, 2, 28));
+			monthlyCryptoService.create("DOT", "Polkadot", 6.343, -0.03, LocalDate.of(2023, 3, 31));
+			monthlyCryptoService.create("DOT", "Polkadot", 5.874, -7.39, LocalDate.of(2023, 4, 30));
+			monthlyCryptoService.create("DOT", "Polkadot", 5.316, -9.50, LocalDate.of(2023, 5, 31));
+			monthlyCryptoService.create("DOT", "Polkadot", 5.182, -2.52, LocalDate.of(2023, 6, 30));
 
 			// MATIC
 			monthlyCryptoService.create("MATIC", "Matic", 0.758, -18.80, LocalDate.of(2022, 12, 31));
