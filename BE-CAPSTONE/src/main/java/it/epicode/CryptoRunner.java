@@ -182,6 +182,9 @@ public class CryptoRunner implements CommandLineRunner {
 
 			double fakeCurrentPrice = fakeCurrentCryptoData.getPrezzo() + cambioPrezzoFittizio;
 
+			percentualeRandom = Math.round(percentualeRandom * 100) / 100.0;
+			fakeCurrentPrice = Math.round(fakeCurrentPrice * 100) / 100.0;
+
 			fakeCurrentCryptoDataService.findBySimboloAndUpadate(fakeCurrentCryptoData.getSimbolo(),
 					fakeCurrentCryptoData.getNome(), fakeCurrentPrice, percentualeRandom);
 

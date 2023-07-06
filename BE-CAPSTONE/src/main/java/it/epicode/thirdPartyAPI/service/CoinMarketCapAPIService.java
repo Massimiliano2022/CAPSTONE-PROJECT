@@ -87,6 +87,9 @@ public class CoinMarketCapAPIService {
 		double price = Double.valueOf(usdMap.get("price").toString());
 		double percent_change_1h = Double.valueOf(usdMap.get("percent_change_1h").toString());
 
+		price = Math.round(price * 100) / 100.0;
+		percent_change_1h = Math.round(percent_change_1h * 100) / 100.0;
+
 		cryptoService.create(symbol, name, price, percent_change_1h);
 		fakeCryptoService.create(symbol, name, price, percent_change_1h);
 

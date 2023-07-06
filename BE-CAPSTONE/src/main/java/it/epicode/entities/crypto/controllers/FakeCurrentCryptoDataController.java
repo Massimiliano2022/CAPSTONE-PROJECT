@@ -41,7 +41,7 @@ public class FakeCurrentCryptoDataController {
 		}
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/{simbolo}")
 	public FakeCurrentCryptoData findBySimbolo(@PathVariable String simbolo) {
 		return cryptoService.findBySimbolo(simbolo);
 	}
