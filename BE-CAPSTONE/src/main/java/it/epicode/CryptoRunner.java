@@ -128,7 +128,8 @@ public class CryptoRunner implements CommandLineRunner {
 		if (!cryptoDB.isEmpty() && fakeCryptoDB.isEmpty()) {
 			for (CurrentCryptoData currentCryptoData : cryptoDB) {
 				fakeCurrentCryptoDataService.create(currentCryptoData.getSimbolo(), currentCryptoData.getNome(),
-						currentCryptoData.getPrezzo(), currentCryptoData.getPercententuale_variazione_1h());
+						currentCryptoData.getPrezzo(),
+						(String.valueOf(currentCryptoData.getPercententuale_variazione_1h())));
 			}
 
 		}
@@ -185,8 +186,11 @@ public class CryptoRunner implements CommandLineRunner {
 			percentualeRandom = Math.round(percentualeRandom * 100) / 100.0;
 			fakeCurrentPrice = Math.round(fakeCurrentPrice * 100) / 100.0;
 
+			String percentualeFormatted = (percentualeRandom >= 0) ? "+" + percentualeRandom
+					: String.valueOf(percentualeRandom);
+
 			fakeCurrentCryptoDataService.findBySimboloAndUpadate(fakeCurrentCryptoData.getSimbolo(),
-					fakeCurrentCryptoData.getNome(), fakeCurrentPrice, percentualeRandom);
+					fakeCurrentCryptoData.getNome(), fakeCurrentPrice, percentualeFormatted);
 
 		}
 	}

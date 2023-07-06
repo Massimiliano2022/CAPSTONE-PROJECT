@@ -12,5 +12,5 @@ public class CriptovalutaUpdatePayload {
 	private String nome;
 	private double prezzo;
 	private LocalDateTime timestamp;
-	private double percententuale_variazione_1h;
+	private String percententuale_variazione_1h;
 }

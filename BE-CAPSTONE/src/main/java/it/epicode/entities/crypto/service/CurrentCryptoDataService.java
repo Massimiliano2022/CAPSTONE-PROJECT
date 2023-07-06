@@ -46,7 +46,7 @@ public class CurrentCryptoDataService {
 		c.setNome(body.getNome());
 		c.setPrezzo(body.getPrezzo());
 		c.setTimestamp(body.getTimestamp());
-		c.setPercententuale_variazione_1h(body.getPercententuale_variazione_1h());
+		c.setPercententuale_variazione_1h(Double.valueOf(body.getPercententuale_variazione_1h()));
 		return cryptoRepo.save(c);
 	}
 

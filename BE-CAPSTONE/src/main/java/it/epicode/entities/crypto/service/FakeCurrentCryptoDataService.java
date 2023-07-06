@@ -23,7 +23,7 @@ public class FakeCurrentCryptoDataService {
 	FakeCurrentCryptoDataRepository cryptoRepo;
 
 	public FakeCurrentCryptoData create(String simbolo, String nome, double prezzo,
-			double percententuale_variazione_1h) {
+			String percententuale_variazione_1h) {
 
 		FakeCurrentCryptoData c = new FakeCurrentCryptoData(simbolo, nome, prezzo, percententuale_variazione_1h);
 
@@ -59,7 +59,7 @@ public class FakeCurrentCryptoDataService {
 	}
 
 	public FakeCurrentCryptoData findBySimboloAndUpadate(String simbolo, String nome, double prezzo,
-			double percententuale_variazione_1h) {
+			String percententuale_variazione_1h) {
 		FakeCurrentCryptoData c = findBySimbolo(simbolo);
 		c.setNome(nome);
 		c.setPrezzo(prezzo);

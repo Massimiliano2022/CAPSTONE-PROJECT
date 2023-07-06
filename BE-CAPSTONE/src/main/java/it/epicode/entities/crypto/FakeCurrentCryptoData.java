@@ -21,9 +21,9 @@ public class FakeCurrentCryptoData {
 	private String nome;
 	private double prezzo;
 	private LocalDateTime timestamp;
-	private double percententuale_variazione_1h;
+	private String percententuale_variazione_1h;
 
-	public FakeCurrentCryptoData(String simbolo, String nome, double prezzo, double percententuale_variazione_1h) {
+	public FakeCurrentCryptoData(String simbolo, String nome, double prezzo, String percententuale_variazione_1h) {
 		setSimbolo(simbolo);
 		setNome(nome);
 		setPrezzo(prezzo);
