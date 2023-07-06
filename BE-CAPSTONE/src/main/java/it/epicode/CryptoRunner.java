@@ -173,11 +173,6 @@ public class CryptoRunner implements CommandLineRunner {
 
 			}
 
-			/*
-			 * double percentualeRandom = minPercentualeRandom + random.nextDouble() *
-			 * (maxPecentualeRandom - minPercentualeRandom);
-			 */
-
 			double percentualeRandom = minPercentualeRandom
 					+ random.nextDouble() * (variazionePercentualeMensile - minPercentualeRandom);
 
