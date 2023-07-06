@@ -46,7 +46,7 @@ public class OperazioneService {
 
 	public Operazione create(OperazionePayload body) {
 
-		FakeCurrentCryptoData crypto = cryptoService.findById(body.getSimboloCrypto());
+		FakeCurrentCryptoData crypto = cryptoService.findBySimbolo(body.getSimboloCrypto());
 		Wallet wallet = walletService.findById(body.getIdWallet());
 
 		TipoOperazione tipoOperazione = TipoOperazione.valueOf(body.getTipoOperazione());

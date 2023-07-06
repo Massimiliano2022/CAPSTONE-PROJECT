@@ -187,8 +187,8 @@ public class CryptoRunner implements CommandLineRunner {
 
 			double fakeCurrentPrice = fakeCurrentCryptoData.getPrezzo() + cambioPrezzoFittizio;
 
-			fakeCurrentCryptoDataService.create(fakeCurrentCryptoData.getSimbolo(), fakeCurrentCryptoData.getNome(),
-					fakeCurrentPrice, percentualeRandom);
+			fakeCurrentCryptoDataService.findBySimboloAndUpadate(fakeCurrentCryptoData.getSimbolo(),
+					fakeCurrentCryptoData.getNome(), fakeCurrentPrice, percentualeRandom);
 
 		}
 	}

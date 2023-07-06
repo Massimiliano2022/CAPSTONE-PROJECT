@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,8 @@ import lombok.NoArgsConstructor;
 public class FakeCurrentCryptoData {
 
 	@Id
+	@GeneratedValue
+	private int id;
 	private String simbolo;
 	private String nome;
 	private double prezzo;

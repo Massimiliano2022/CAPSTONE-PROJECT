@@ -48,8 +48,8 @@ public class AssetService {
 				.orElseThrow(() -> new NotFoundException("Asset con id: " + id + " non trovato!"));
 	}
 
-	public Asset findByCriptovaluta(String idCriptovaluta) {
-		FakeCurrentCryptoData c = cryptoService.findById(idCriptovaluta);
+	public Asset findByCriptovaluta(String simbolo) {
+		FakeCurrentCryptoData c = cryptoService.findBySimbolo(simbolo);
 		return assetRepo.findByCrypto(c).orElseThrow(() -> new NotFoundException("Asset non trovato!"));
 	}
 

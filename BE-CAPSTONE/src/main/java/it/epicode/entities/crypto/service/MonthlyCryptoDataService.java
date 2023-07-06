@@ -42,6 +42,11 @@ public class MonthlyCryptoDataService {
 				.orElseThrow(() -> new NotFoundException("Criptovaluta : " + id + " non trovata!"));
 	}
 
+	// LISTA DATI MENSILI
+	public List<MonthlyCryptoData> findBySimbolo(String simbolo) {
+		return monthlyCryptoRepo.findBySimbolo(simbolo);
+	}
+
 	public MonthlyCryptoData findByIdAndUpadate(String id, String nome, double chiusuraPrezzo, double variazionePrezzo,
 			LocalDate data) {
 		MonthlyCryptoData c = findById(id);

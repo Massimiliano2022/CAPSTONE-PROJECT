@@ -30,6 +30,10 @@ public class SecurityConfig {
 
 		http.authorizeHttpRequests(auth -> auth.requestMatchers("/auth/**").permitAll());
 		http.authorizeHttpRequests(auth -> auth.requestMatchers("/crypto/**").permitAll());
+
+		// http.authorizeHttpRequests(auth ->
+		// auth.requestMatchers("/monthly-crypto-data/**").permitAll());
+
 		http.authorizeHttpRequests(auth -> auth.requestMatchers("/utenti/**").authenticated());
 		http.authorizeHttpRequests(auth -> auth.requestMatchers("/wallet/**").authenticated());
 		http.authorizeHttpRequests(auth -> auth.requestMatchers("/operazioni/**").authenticated());

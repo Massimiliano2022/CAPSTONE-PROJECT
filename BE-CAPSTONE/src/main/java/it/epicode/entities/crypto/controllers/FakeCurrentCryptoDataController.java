@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.epicode.entities.crypto.FakeCurrentCryptoData;
+import it.epicode.entities.crypto.MonthlyCryptoData;
 import it.epicode.entities.crypto.payloads.CriptovalutaUpdatePayload;
 import it.epicode.entities.crypto.service.FakeCurrentCryptoDataService;
+import it.epicode.entities.crypto.service.MonthlyCryptoDataService;
 
 @RestController
 @RequestMapping("/crypto")
@@ -25,6 +27,9 @@ public class FakeCurrentCryptoDataController {
 
 	@Autowired
 	private FakeCurrentCryptoDataService cryptoService;
+
+	@Autowired
+	private MonthlyCryptoDataService monthlyCryptoService;
 
 	@GetMapping("")
 	public ResponseEntity<List<FakeCurrentCryptoData>> getCripto() {
@@ -37,21 +42,33 @@ public class FakeCurrentCryptoDataController {
 	}
 
 	@GetMapping("/{id}")
-	public FakeCurrentCryptoData findById(@PathVariable String id) {
-		return cryptoService.findById(id);
+	public FakeCurrentCryptoData findBySimbolo(@PathVariable String simbolo) {
+		return cryptoService.findBySimbolo(simbolo);
 	}
 
 	@PutMapping("/{id}")
 	@PreAuthorize("hasAnyAuthority('ADMIN')")
-	public FakeCurrentCryptoData updateById(@PathVariable String id, @RequestBody CriptovalutaUpdatePayload payload) {
-		return cryptoService.findByIdAndUpadate(id, payload);
+	public FakeCurrentCryptoData updateBySibmolo(@PathVariable String simbolo,
+			@RequestBody CriptovalutaUpdatePayload payload) {
+		return cryptoService.findBySimboloAndUpadate(simbolo, payload.getNome(), payload.getPrezzo(),
+				payload.getPercententuale_variazione_1h());
 	}
 
 	@DeleteMapping("/{id}")
 	@PreAuthorize("hasAnyAuthority('ADMIN')")
 	@ResponseStatus(HttpStatus.OK)
-	public void deleteById(@PathVariable String id) {
-		cryptoService.findByIdAndDelete(id);
+	public void deleteBySibmolo(@PathVariable String simbolo) {
+		cryptoService.findBySimboloAndDelete(simbolo);
+	}
+
+	@GetMapping("/monthly/{simbolo}")
+	public ResponseEntity<List<MonthlyCryptoData>> getMonthlyCriptoData(@PathVariable String simbolo) {
+		List<MonthlyCryptoData> listaCripto = monthlyCryptoService.findBySimbolo(simbolo);
+		if (!listaCripto.isEmpty()) {
+			return new ResponseEntity<>(listaCripto, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
 	}
 
 }

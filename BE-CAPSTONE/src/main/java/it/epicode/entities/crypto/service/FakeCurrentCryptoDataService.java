@@ -1,5 +1,7 @@
 package it.epicode.entities.crypto.service;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,12 +39,17 @@ public class FakeCurrentCryptoDataService {
 		return cryptoRepo.findAll(pagina);
 	}
 
-	public FakeCurrentCryptoData findById(String id) {
+	public FakeCurrentCryptoData findById(int id) {
 		return cryptoRepo.findById(id)
 				.orElseThrow(() -> new NotFoundException("Criptovaluta : " + id + " non trovata!"));
 	}
 
-	public FakeCurrentCryptoData findByIdAndUpadate(String id, CriptovalutaUpdatePayload body) {
+	public FakeCurrentCryptoData findBySimbolo(String simbolo) {
+		return cryptoRepo.findBySimbolo(simbolo)
+				.orElseThrow(() -> new NotFoundException("Criptovaluta : " + simbolo + " non trovata!"));
+	}
+
+	public FakeCurrentCryptoData findByIdAndUpadate(int id, CriptovalutaUpdatePayload body) {
 		FakeCurrentCryptoData c = findById(id);
 		c.setNome(body.getNome());
 		c.setPrezzo(body.getPrezzo());
@@ -51,8 +58,23 @@ public class FakeCurrentCryptoDataService {
 		return cryptoRepo.save(c);
 	}
 
-	public void findByIdAndDelete(String id) {
+	public FakeCurrentCryptoData findBySimboloAndUpadate(String simbolo, String nome, double prezzo,
+			double percententuale_variazione_1h) {
+		FakeCurrentCryptoData c = findBySimbolo(simbolo);
+		c.setNome(nome);
+		c.setPrezzo(prezzo);
+		c.setTimestamp(LocalDateTime.now(ZoneId.of("Europe/Rome")));
+		c.setPercententuale_variazione_1h(percententuale_variazione_1h);
+		return cryptoRepo.save(c);
+	}
+
+	public void findByIdAndDelete(int id) {
 		FakeCurrentCryptoData c = findById(id);
+		cryptoRepo.delete(c);
+	}
+
+	public void findBySimboloAndDelete(String simbolo) {
+		FakeCurrentCryptoData c = findBySimbolo(simbolo);
 		cryptoRepo.delete(c);
 	}
 
