@@ -24,6 +24,7 @@ public class FakeCurrentCryptoData {
 	private String percententuale_variazione_1h;
 
 	public FakeCurrentCryptoData(String simbolo, String nome, double prezzo, String percententuale_variazione_1h) {
+		setId(id);
 		setSimbolo(simbolo);
 		setNome(nome);
 		setPrezzo(prezzo);

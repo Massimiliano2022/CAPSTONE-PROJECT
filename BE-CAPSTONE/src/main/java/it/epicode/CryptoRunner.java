@@ -2,6 +2,9 @@ package it.epicode;
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
@@ -143,6 +146,8 @@ public class CryptoRunner implements CommandLineRunner {
 
 		List<FakeCurrentCryptoData> fakeCurrentCryptoDataList = fakeCurrentCryptoDataRepo.findAll();
 
+		fakeCurrentCryptoDataList.sort(Comparator.comparingInt(FakeCurrentCryptoData::getId)); // Ordina per ID
+
 		for (FakeCurrentCryptoData fakeCurrentCryptoData : fakeCurrentCryptoDataList) {
 			String simbolo = fakeCurrentCryptoData.getSimbolo();
 
@@ -180,8 +185,20 @@ public class CryptoRunner implements CommandLineRunner {
 			String percentualeFormatted = (percentualeRandom >= 0) ? "+" + percentualeRandom
 					: String.valueOf(percentualeRandom);
 
-			fakeCurrentCryptoDataService.findBySimboloAndUpadate(fakeCurrentCryptoData.getSimbolo(),
-					fakeCurrentCryptoData.getNome(), fakeCurrentPrice, percentualeFormatted);
+			/*
+			 * fakeCurrentCryptoDataService.findBySimboloAndUpadate(fakeCurrentCryptoData.
+			 * getSimbolo(), fakeCurrentCryptoData.getNome(), fakeCurrentPrice,
+			 * percentualeFormatted);
+			 */
+
+			fakeCurrentCryptoData.setId(fakeCurrentCryptoData.getId());
+			fakeCurrentCryptoData.setSimbolo(fakeCurrentCryptoData.getSimbolo());
+			fakeCurrentCryptoData.setNome(fakeCurrentCryptoData.getNome());
+			fakeCurrentCryptoData.setPrezzo(fakeCurrentPrice);
+			fakeCurrentCryptoData.setTimestamp(LocalDateTime.now(ZoneId.of("Europe/Rome")));
+			fakeCurrentCryptoData.setPercententuale_variazione_1h(percentualeFormatted);
+
+			fakeCurrentCryptoDataRepo.save(fakeCurrentCryptoData);
 
 		}
 	}
