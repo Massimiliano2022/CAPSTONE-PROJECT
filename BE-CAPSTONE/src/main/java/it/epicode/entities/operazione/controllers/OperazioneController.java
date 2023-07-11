@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,7 +49,7 @@ public class OperazioneController {
 
 	@PostMapping("")
 	@PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
-	public Operazione createOperazione(@RequestBody OperazionePayload payload) {
+	public Operazione createOperazione(@RequestBody @Validated OperazionePayload payload) {
 		return operazioneService.create(payload);
 	}
 
