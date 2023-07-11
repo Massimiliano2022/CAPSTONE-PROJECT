@@ -185,12 +185,6 @@ public class CryptoRunner implements CommandLineRunner {
 			String percentualeFormatted = (percentualeRandom >= 0) ? "+" + percentualeRandom
 					: String.valueOf(percentualeRandom);
 
-			/*
-			 * fakeCurrentCryptoDataService.findBySimboloAndUpadate(fakeCurrentCryptoData.
-			 * getSimbolo(), fakeCurrentCryptoData.getNome(), fakeCurrentPrice,
-			 * percentualeFormatted);
-			 */
-
 			fakeCurrentCryptoData.setId(fakeCurrentCryptoData.getId());
 			fakeCurrentCryptoData.setSimbolo(fakeCurrentCryptoData.getSimbolo());
 			fakeCurrentCryptoData.setNome(fakeCurrentCryptoData.getNome());
