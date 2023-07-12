@@ -36,8 +36,7 @@ public class Operazione {
 	double quantita;
 	private double prezzoAcquisto;
 	private double prezzoVendita;
-	private LocalDateTime dataAperturaOperazione;
-	private LocalDateTime dataChiusuraOperazione;
+	private LocalDateTime dataOperazione;
 
 	public Operazione(Wallet wallet, FakeCurrentCryptoData crypto, TipoOperazione tipoOperazione, double quantita) {
 		setWallet(wallet);

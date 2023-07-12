@@ -58,18 +58,19 @@ public class OperazioneService {
 
 		if (tipoOperazione == TipoOperazione.SELL) {
 			vendiCriptovaluta(crypto, wallet, quantita);
-			operazione.setDataChiusuraOperazione(dataOperazione);
+			// operazione.setDataOperazione(dataOperazione);
 			operazione.setPrezzoVendita(crypto.getPrezzo());
 
 		} else {
 			acquistaCriptovaluta(crypto, wallet, quantita);
-			operazione.setDataAperturaOperazione(dataOperazione);
+			// operazione.setDataOperazione(dataOperazione);
 			operazione.setPrezzoAcquisto(crypto.getPrezzo());
 		}
 
 		operazione.setWallet(wallet);
 		operazione.setCrypto(crypto);
 		operazione.setTipoOperazione(tipoOperazione);
+		operazione.setDataOperazione(dataOperazione);
 		operazione.setQuantita(quantita);
 		return operazioneRepo.save(operazione);
 	}
