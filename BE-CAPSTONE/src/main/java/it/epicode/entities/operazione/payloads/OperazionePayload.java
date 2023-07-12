@@ -1,6 +1,6 @@
 package it.epicode.entities.operazione.payloads;
 
-import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +14,7 @@ public class OperazionePayload {
 	private String simboloCrypto;
 	@NotNull(message = "Il tipo operazione è obbligatorio")
 	private String tipoOperazione;
-	@Min(value = 1, message = "La quantità deve essere maggiore di zero")
+	@DecimalMin(value = "0.01", message = "La quantità deve essere maggiore o uguale a 0.01")
 	private double quantita;
 
 }
