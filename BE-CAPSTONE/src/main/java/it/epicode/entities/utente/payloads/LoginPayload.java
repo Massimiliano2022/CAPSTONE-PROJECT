@@ -1,13 +1,14 @@
 package it.epicode.entities.utente.payloads;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
 public class LoginPayload {
-	@NotNull(message = "Inserire indirizzo e-mail!")
+	@NotBlank(message = "Inserire indirizzo e-mail!")
 	@Email(message = "Non hai inserito un indirizzo email valido")
 	private String email;
 	@NotNull(message = "Inserire password!")
