@@ -87,8 +87,8 @@ public class CoinMarketCapAPIService {
 		double price = Double.valueOf(usdMap.get("price").toString());
 		double percent_change_1h = Double.valueOf(usdMap.get("percent_change_1h").toString());
 
-		price = Math.round(price * 100) / 100.0;
-		percent_change_1h = Math.round(percent_change_1h * 100) / 100.0;
+		price = Math.round(price * 10000) / 10000.0;
+		percent_change_1h = Math.round(percent_change_1h * 100000) / 100000.0;
 
 		String percentualeFormatted = (percent_change_1h >= 0) ? "+" + percent_change_1h
 				: String.valueOf(percent_change_1h);
