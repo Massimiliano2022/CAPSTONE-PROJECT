@@ -7,9 +7,10 @@ import lombok.Data;
 
 @Data
 public class LoginPayload {
+	@NotNull(message = "Inserire indirizzo e-mail!")
 	@Email(message = "Non hai inserito un indirizzo email valido")
 	private String email;
-	@NotNull(message = "La password è obbligatoria")
+	@NotNull(message = "Inserire password!")
 	@Size(min = 3, max = 30, message = "Password min 3 caratteri, massimo 30")
 	private String password;
 }
