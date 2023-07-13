@@ -50,7 +50,7 @@ public class CryptoRunner implements CommandLineRunner {
 
 		List<CurrentCryptoData> cryptoDB = cryptoRepo.findAll();
 		List<MonthlyCryptoData> cryptoMonthlyDB = monthlyCryptoRepo.findAll();
-		List<FakeCurrentCryptoData> fakeCryptoDB = fakeCurrentCryptoDataRepo.findAll();
+
 		if (cryptoDB.isEmpty()) {
 			cmcService.getRequest();
 		}
