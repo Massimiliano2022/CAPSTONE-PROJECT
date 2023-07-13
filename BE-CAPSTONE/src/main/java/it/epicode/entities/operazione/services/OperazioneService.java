@@ -58,12 +58,10 @@ public class OperazioneService {
 
 		if (tipoOperazione == TipoOperazione.SELL) {
 			vendiCriptovaluta(crypto, wallet, quantita);
-			// operazione.setDataOperazione(dataOperazione);
 			operazione.setPrezzoVendita(crypto.getPrezzo());
 
 		} else {
 			acquistaCriptovaluta(crypto, wallet, quantita);
-			// operazione.setDataOperazione(dataOperazione);
 			operazione.setPrezzoAcquisto(crypto.getPrezzo());
 		}
 
@@ -95,7 +93,7 @@ public class OperazioneService {
 		}
 
 		double nuovaQuantita = assetTrovato.getQuantita() - quantita;
-		if (nuovaQuantita == 0) {
+		if (nuovaQuantita == 0.0) {
 			double valoreCriptovaluta = quantita * crypto.getPrezzo();
 			double nuovoSaldo = wallet.getSaldoDisponibile() + valoreCriptovaluta;
 			walletService.findByIdAndUpadate(wallet.getId().toString(), nuovoSaldo);
