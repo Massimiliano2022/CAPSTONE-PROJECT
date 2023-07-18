@@ -167,4 +167,20 @@ public class OperazioneService {
 		return operazioneRepo.findByWalletAndTipoOperazione(pagina, w, tipoOperazione);
 	}
 
+	public Page<Operazione> findByWalletAndCrypto(int page, String ordinamento, String idWallet, String simboloCrypto) {
+		Wallet w = walletService.findById(idWallet);
+		FakeCurrentCryptoData crypto = cryptoService.findBySimbolo(simboloCrypto);
+		Pageable pagina = PageRequest.of(page, 10, Sort.by(ordinamento));
+		return operazioneRepo.findByWalletAndCrypto(pagina, w, crypto);
+	}
+
+	public Page<Operazione> findByWalletAndTipoOperazioneAndCrypto(int page, String ordinamento, String idWallet,
+			String tipo, String simboloCrypto) {
+		Wallet w = walletService.findById(idWallet);
+		TipoOperazione tipoOperazione = TipoOperazione.valueOf(tipo);
+		FakeCurrentCryptoData crypto = cryptoService.findBySimbolo(simboloCrypto);
+		Pageable pagina = PageRequest.of(page, 10, Sort.by(ordinamento));
+		return operazioneRepo.findByWalletAndTipoOperazioneAndCrypto(pagina, w, tipoOperazione, crypto);
+	}
+
 }

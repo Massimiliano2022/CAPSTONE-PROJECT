@@ -66,27 +66,26 @@ public class OperazioneController {
 		operazioneService.findByIdAndDelete(id);
 	}
 
-	// ENDPOINT OPERAZIONI PER WALLET UTENTE CORRENTE
 	@GetMapping("/me")
 	@PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
-	public Page<Operazione> getOperazioniUtenteCorrente(@RequestParam(defaultValue = "0") int page,
-			@RequestParam(defaultValue = "id") String order) {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		Utente utente = (Utente) authentication.getPrincipal();
-		Wallet w = walletService.findByUtente(utente.getId().toString());
-		return operazioneService.findByWallet(page, order, w.getId().toString());
-	}
-
-	// ENDPOINT OPERAZIONI PER WALLET UTENTE CORRENTE E TIPO OPERAZIONE
-	@GetMapping("/me/tipo")
-	@PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
 	public Page<Operazione> getOperazioniUtenteCorrenteByTipoOperazione(@RequestParam(defaultValue = "0") int page,
-			@RequestParam(defaultValue = "id") String order,
-			@RequestParam(required = false, defaultValue = "BUY") String tipoOperazione) {
+			@RequestParam(defaultValue = "id") String order, @RequestParam(required = false) String tipoOperazione,
+			@RequestParam(required = false) String simboloCrypto) {
+
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Utente utente = (Utente) authentication.getPrincipal();
 		Wallet w = walletService.findByUtente(utente.getId().toString());
-		return operazioneService.findByWalletAndTipoOperazione(page, order, w.getId().toString(), tipoOperazione);
+
+		if (tipoOperazione == null && simboloCrypto == null) {
+			return operazioneService.findByWallet(page, order, w.getId().toString());
+		} else if (tipoOperazione != null && simboloCrypto == null) {
+			return operazioneService.findByWalletAndTipoOperazione(page, order, w.getId().toString(), tipoOperazione);
+		} else if (tipoOperazione == null && simboloCrypto != null) {
+			return operazioneService.findByWalletAndCrypto(page, order, w.getId().toString(), simboloCrypto);
+		} else {
+			return operazioneService.findByWalletAndTipoOperazioneAndCrypto(page, order, w.getId().toString(),
+					tipoOperazione, simboloCrypto);
+		}
 	}
 
 }
