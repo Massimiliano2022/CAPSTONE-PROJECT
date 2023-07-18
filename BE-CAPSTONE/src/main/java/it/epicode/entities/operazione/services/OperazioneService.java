@@ -160,4 +160,11 @@ public class OperazioneService {
 		return operazioneRepo.findByWallet(pagina, w);
 	}
 
+	public Page<Operazione> findByWalletAndTipoOperazione(int page, String ordinamento, String idWallet, String tipo) {
+		Wallet w = walletService.findById(idWallet);
+		TipoOperazione tipoOperazione = TipoOperazione.valueOf(tipo);
+		Pageable pagina = PageRequest.of(page, 10, Sort.by(ordinamento));
+		return operazioneRepo.findByWalletAndTipoOperazione(pagina, w, tipoOperazione);
+	}
+
 }

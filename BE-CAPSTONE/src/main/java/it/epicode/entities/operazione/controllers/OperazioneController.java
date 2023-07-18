@@ -66,7 +66,7 @@ public class OperazioneController {
 		operazioneService.findByIdAndDelete(id);
 	}
 
-	// IMPLEMENTARE ENDPOINT OPERAZIONI PER WALLET UTENTE CORRENTE
+	// ENDPOINT OPERAZIONI PER WALLET UTENTE CORRENTE
 	@GetMapping("/me")
 	@PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
 	public Page<Operazione> getOperazioniUtenteCorrente(@RequestParam(defaultValue = "0") int page,
@@ -75,6 +75,18 @@ public class OperazioneController {
 		Utente utente = (Utente) authentication.getPrincipal();
 		Wallet w = walletService.findByUtente(utente.getId().toString());
 		return operazioneService.findByWallet(page, order, w.getId().toString());
+	}
+
+	// ENDPOINT OPERAZIONI PER WALLET UTENTE CORRENTE E TIPO OPERAZIONE
+	@GetMapping("/me/tipo")
+	@PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
+	public Page<Operazione> getOperazioniUtenteCorrenteByTipoOperazione(@RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "id") String order,
+			@RequestParam(required = false, defaultValue = "BUY") String tipoOperazione) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Utente utente = (Utente) authentication.getPrincipal();
+		Wallet w = walletService.findByUtente(utente.getId().toString());
+		return operazioneService.findByWalletAndTipoOperazione(page, order, w.getId().toString(), tipoOperazione);
 	}
 
 }
