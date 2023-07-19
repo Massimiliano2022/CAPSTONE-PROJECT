@@ -66,28 +66,49 @@ public class OperazioneController {
 		operazioneService.findByIdAndDelete(id);
 	}
 
-	@GetMapping("/me")
+	// @GetMapping("/me")
+	// @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
+	// public Page<Operazione>
+	// getOperazioniUtenteCorrente(@RequestParam(defaultValue = "0") int page,
+	// @RequestParam(defaultValue = "dataOperazione") String order,
+	// @RequestParam(required = false) String tipoOperazione,
+	// @RequestParam(required = false) String simboloCrypto) {
 
+	// Authentication authentication =
+	// SecurityContextHolder.getContext().getAuthentication();
+	// Utente utente = (Utente) authentication.getPrincipal();
+	// Wallet w = walletService.findByUtente(utente.getId().toString());
+
+	// if (tipoOperazione == null && simboloCrypto == null) {
+	// return operazioneService.findByWallet(page, order, w.getId().toString());
+	// } else if (tipoOperazione != null && simboloCrypto == null) {
+	// return operazioneService.findByWalletAndTipoOperazione(page, order,
+	// w.getId().toString(), tipoOperazione);
+	// } else if (tipoOperazione == null && simboloCrypto != null) {
+	// return operazioneService.findByWalletAndCrypto(page, order,
+	// w.getId().toString(), simboloCrypto);
+	// } else {
+	// return operazioneService.findByWalletAndTipoOperazioneAndCrypto(page, order,
+	// w.getId().toString(),
+	// tipoOperazione, simboloCrypto);
+	// }
+	// }
+
+	@GetMapping("/me")
 	@PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
-	public Page<Operazione> getOperazioniUtenteCorrente(@RequestParam(defaultValue = "0") int page,
+	public Page<Operazione> findOperazioniByCustomFilters(@RequestParam(defaultValue = "0") int page,
 			@RequestParam(defaultValue = "dataOperazione") String order,
-			@RequestParam(required = false) String tipoOperazione,
-			@RequestParam(required = false) String simboloCrypto) {
+			@RequestParam(required = false) String tipoOperazione, @RequestParam(required = false) String simboloCrypto,
+			@RequestParam(required = false) String startDate, @RequestParam(required = false) String endDate) {
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Utente utente = (Utente) authentication.getPrincipal();
 		Wallet w = walletService.findByUtente(utente.getId().toString());
 
-		if (tipoOperazione == null && simboloCrypto == null) {
-			return operazioneService.findByWallet(page, order, w.getId().toString());
-		} else if (tipoOperazione != null && simboloCrypto == null) {
-			return operazioneService.findByWalletAndTipoOperazione(page, order, w.getId().toString(), tipoOperazione);
-		} else if (tipoOperazione == null && simboloCrypto != null) {
-			return operazioneService.findByWalletAndCrypto(page, order, w.getId().toString(), simboloCrypto);
-		} else {
-			return operazioneService.findByWalletAndTipoOperazioneAndCrypto(page, order, w.getId().toString(),
-					tipoOperazione, simboloCrypto);
-		}
-	}
+		System.out.println(startDate);
+		System.out.println(endDate);
 
+		return operazioneService.findOperazioniByCustomFilters(page, order, w.getId().toString(), tipoOperazione,
+				simboloCrypto, startDate, endDate);
+	}
 }

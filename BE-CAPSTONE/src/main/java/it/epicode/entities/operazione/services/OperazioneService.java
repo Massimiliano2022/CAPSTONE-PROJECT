@@ -183,4 +183,24 @@ public class OperazioneService {
 		return operazioneRepo.findByWalletAndTipoOperazioneAndCrypto(pagina, w, tipoOperazione, crypto);
 	}
 
+	// FIND BY CUSTOM FILTERS
+	public Page<Operazione> findOperazioniByCustomFilters(int page, String ordinamento, String idWallet, String tipo,
+			String simboloCrypto, String startDate, String endDate) {
+
+		Wallet w = walletService.findById(idWallet);
+
+		TipoOperazione tipoOperazione = null;
+		FakeCurrentCryptoData crypto = null;
+
+		if (tipo != null) {
+			tipoOperazione = TipoOperazione.valueOf(tipo);
+		}
+		if (simboloCrypto != null) {
+			crypto = cryptoService.findBySimbolo(simboloCrypto);
+		}
+
+		Pageable pagina = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, ordinamento));
+		return operazioneRepo.findOperazioniByCustomFilters(pagina, w, tipoOperazione, crypto, startDate, endDate);
+	}
+
 }
