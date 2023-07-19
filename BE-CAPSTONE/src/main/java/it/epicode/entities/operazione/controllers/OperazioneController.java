@@ -67,8 +67,9 @@ public class OperazioneController {
 	}
 
 	@GetMapping("/me")
+
 	@PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
-	public Page<Operazione> getOperazioniUtenteCorrenteByTipoOperazione(@RequestParam(defaultValue = "0") int page,
+	public Page<Operazione> getOperazioniUtenteCorrente(@RequestParam(defaultValue = "0") int page,
 			@RequestParam(defaultValue = "dataOperazione") String order,
 			@RequestParam(required = false) String tipoOperazione,
 			@RequestParam(required = false) String simboloCrypto) {
