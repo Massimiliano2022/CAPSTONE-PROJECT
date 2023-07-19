@@ -156,21 +156,21 @@ public class OperazioneService {
 
 	public Page<Operazione> findByWallet(int page, String ordinamento, String idWallet) {
 		Wallet w = walletService.findById(idWallet);
-		Pageable pagina = PageRequest.of(page, 10, Sort.by(ordinamento));
+		Pageable pagina = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, ordinamento));
 		return operazioneRepo.findByWallet(pagina, w);
 	}
 
 	public Page<Operazione> findByWalletAndTipoOperazione(int page, String ordinamento, String idWallet, String tipo) {
 		Wallet w = walletService.findById(idWallet);
 		TipoOperazione tipoOperazione = TipoOperazione.valueOf(tipo);
-		Pageable pagina = PageRequest.of(page, 10, Sort.by(ordinamento));
+		Pageable pagina = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, ordinamento));
 		return operazioneRepo.findByWalletAndTipoOperazione(pagina, w, tipoOperazione);
 	}
 
 	public Page<Operazione> findByWalletAndCrypto(int page, String ordinamento, String idWallet, String simboloCrypto) {
 		Wallet w = walletService.findById(idWallet);
 		FakeCurrentCryptoData crypto = cryptoService.findBySimbolo(simboloCrypto);
-		Pageable pagina = PageRequest.of(page, 10, Sort.by(ordinamento));
+		Pageable pagina = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, ordinamento));
 		return operazioneRepo.findByWalletAndCrypto(pagina, w, crypto);
 	}
 
@@ -179,7 +179,7 @@ public class OperazioneService {
 		Wallet w = walletService.findById(idWallet);
 		TipoOperazione tipoOperazione = TipoOperazione.valueOf(tipo);
 		FakeCurrentCryptoData crypto = cryptoService.findBySimbolo(simboloCrypto);
-		Pageable pagina = PageRequest.of(page, 10, Sort.by(ordinamento));
+		Pageable pagina = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, ordinamento));
 		return operazioneRepo.findByWalletAndTipoOperazioneAndCrypto(pagina, w, tipoOperazione, crypto);
 	}
 
