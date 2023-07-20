@@ -35,15 +35,22 @@ public class FakeCurrentCryptoDataController {
 
 	@GetMapping("")
 	public Page<FakeCurrentCryptoData> getCripto(@RequestParam(defaultValue = "0") int page,
-			@RequestParam(defaultValue = "id") String order) {
-		return cryptoService.findAll(page, order);
+			@RequestParam(defaultValue = "id") String order, @RequestParam(required = false) String query) {
+		if (query == null) {
+			return cryptoService.findAll(page, order);
+		} else {
+			return cryptoService.searchByNameOrSymbol(page, order, query);
+		}
 	}
 
-	@GetMapping("/search")
-	public Page<FakeCurrentCryptoData> searchByNameOrSymbol(@RequestParam(defaultValue = "0") int page,
-			@RequestParam(defaultValue = "id") String order, @RequestParam(required = false) String query) {
-		return cryptoService.searchByNameOrSymbol(page, order, query);
-	}
+	/*
+	 * @GetMapping("/search") public Page<FakeCurrentCryptoData>
+	 * searchByNameOrSymbol(@RequestParam(defaultValue = "0") int page,
+	 * 
+	 * @RequestParam(defaultValue = "id") String order, @RequestParam(required =
+	 * false) String query) { return cryptoService.searchByNameOrSymbol(page, order,
+	 * query); }
+	 */
 
 	@GetMapping("/{simbolo}")
 	public FakeCurrentCryptoData findBySimbolo(@PathVariable String simbolo) {
