@@ -30,13 +30,18 @@ public class FakeCurrentCryptoDataService {
 		return cryptoRepo.save(c);
 	}
 
-	public List<FakeCurrentCryptoData> find() {
-		return cryptoRepo.findAll();
+	public Page<FakeCurrentCryptoData> findAll(int page, String ordinamento) {
+		Pageable pagina = PageRequest.of(page, 8, Sort.by(ordinamento));
+		return cryptoRepo.findAll(pagina);
 	}
 
-	public Page<FakeCurrentCryptoData> findAll(int page, String ordinamento) {
-		Pageable pagina = PageRequest.of(page, 10, Sort.by(ordinamento));
-		return cryptoRepo.findAll(pagina);
+	public Page<FakeCurrentCryptoData> searchByNameOrSymbol(int page, String ordinamento, String query) {
+		Pageable pagina = PageRequest.of(page, 8, Sort.by(ordinamento));
+		return cryptoRepo.searchByNameOrSymbol(pagina, query);
+	}
+
+	public List<FakeCurrentCryptoData> find() {
+		return cryptoRepo.findAll();
 	}
 
 	public FakeCurrentCryptoData findById(int id) {
