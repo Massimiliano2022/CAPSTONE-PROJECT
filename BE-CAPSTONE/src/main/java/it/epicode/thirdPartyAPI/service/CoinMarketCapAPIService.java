@@ -22,6 +22,9 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import it.epicode.entities.crypto.FakeCurrentCryptoData;
+import it.epicode.entities.crypto.repository.CurrentCryptoDataRepository;
+import it.epicode.entities.crypto.repository.FakeCurrentCryptoDataRepository;
 import it.epicode.entities.crypto.service.CurrentCryptoDataService;
 import it.epicode.entities.crypto.service.FakeCurrentCryptoDataService;
 
@@ -34,6 +37,12 @@ public class CoinMarketCapAPIService {
 	public void setCmcApiKey(String apiKey) {
 		cmcApiKey = apiKey;
 	}
+
+	@Autowired
+	CurrentCryptoDataRepository cryptoRepo;
+
+	@Autowired
+	FakeCurrentCryptoDataRepository fakeCurrentCryptoDataRepo;
 
 	@Autowired
 	CurrentCryptoDataService cryptoService;
@@ -70,6 +79,8 @@ public class CoinMarketCapAPIService {
 
 	public void processJSonData(String json, String crypto) throws JsonMappingException, JsonProcessingException {
 
+		List<FakeCurrentCryptoData> fakeCryptoDB = fakeCurrentCryptoDataRepo.findAll();
+
 		ObjectMapper objectMapper = new ObjectMapper();
 		JsonNode rootNode = objectMapper.readTree(json);
 
@@ -93,10 +104,12 @@ public class CoinMarketCapAPIService {
 		String percentualeFormatted = (percent_change_1h >= 0) ? "+" + percent_change_1h
 				: String.valueOf(percent_change_1h);
 
-		// String percentualeFormattata = String.valueOf(percent_change_1h);
-
 		cryptoService.create(symbol, name, price, percent_change_1h);
-		fakeCryptoService.create(symbol, name, price, percentualeFormatted);
 
+		if (fakeCryptoDB.isEmpty()) {
+			fakeCryptoService.create(symbol, name, price, percentualeFormatted);
+		} else {
+			fakeCryptoService.findBySimboloAndUpadate(symbol, name, price, percentualeFormatted);
+		}
 	}
 }

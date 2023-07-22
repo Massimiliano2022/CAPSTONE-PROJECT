@@ -13,7 +13,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import it.epicode.entities.crypto.CurrentCryptoData;
 import it.epicode.entities.crypto.FakeCurrentCryptoData;
 import it.epicode.entities.crypto.MonthlyCryptoData;
 import it.epicode.entities.crypto.repository.CurrentCryptoDataRepository;
@@ -47,12 +46,17 @@ public class CryptoRunner implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		// Se firstRun = true eseguo la richiesta get all'API di CoinMarketCap
+		// e se db già popolato aggiorno i dati con quelli più recenti
+		// ottenuti come risposta dalla get, in modo che ad ogni avvio
+		// i prezzi siano congrui alla realta
+		boolean firstRun = true;
 
-		List<CurrentCryptoData> cryptoDB = cryptoRepo.findAll();
 		List<MonthlyCryptoData> cryptoMonthlyDB = monthlyCryptoRepo.findAll();
 
-		if (cryptoDB.isEmpty()) {
+		if (firstRun) {
 			cmcService.getRequest();
+			firstRun = false;
 		}
 		if (cryptoMonthlyDB.isEmpty()) {
 			// BTC

@@ -63,6 +63,14 @@ public class FakeCurrentCryptoDataService {
 		return cryptoRepo.save(c);
 	}
 
+	public FakeCurrentCryptoData findByIdAndUpadate(int id, String nome, double prezzo, String variazionePercentuale) {
+		FakeCurrentCryptoData c = findById(id);
+		c.setNome(nome);
+		c.setPrezzo(prezzo);
+		c.setPercententuale_variazione_1h(String.valueOf(variazionePercentuale));
+		return cryptoRepo.save(c);
+	}
+
 	public FakeCurrentCryptoData findBySimboloAndUpadate(String simbolo, String nome, double prezzo,
 			String percententuale_variazione_1h) {
 		FakeCurrentCryptoData c = findBySimbolo(simbolo);
