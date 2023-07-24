@@ -8,6 +8,8 @@ Front-end:
 - React Bootstrap;
 - React con Redux per la gestione dello stato;
 
+[DigitFin Exchange Frontend Repository](https://github.com/Massimiliano2022/CAPSTONE-PROJECT-BACKEND)
+
 Back-end:
 
 Java 
