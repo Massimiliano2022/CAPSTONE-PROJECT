@@ -35,8 +35,8 @@ L'applicazione offre agli utenti la possibilità di visualizzare il saldo totale
 
 - Visualizzazione lista operazioni:
 Gli utenti possono accedere a un elenco dettagliato delle operazioni svolte (acquisti e vendite). Questa sezione fornisce agli utenti una panoramica completa delle loro attività e consente loro di generare report utili ai fini fiscali o per tenere traccia delle proprie posizioni nel tempo. E' possibile filtrare le operazioni per:
-- range di date,
-- tipo operazione (BUY/SELL),
-- crypto
-E' richiesto il login per poter visualizzare queste informazioni.
+  - range di date;
+  - tipo operazione (BUY/SELL);
+  - crypto.
+
 
