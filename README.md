@@ -7,7 +7,11 @@ Front-end:
 
 - React : libreria per lo sviluppo front-end più utilizzata. Permette di creare app veloci, scalabili e mantenibili nel tempo.
 - React-Bootstrap : libreria react costruita sulla base del framework Css Bootstrap;
-- React-Redux: libreria react che consente l'utilizzo di Redux per la gestione dello stato, fornisce l'accesso ad uno stato condiviso tra tutti i componenti dell'applicazione;
+- React-Router-Dom : libreria per SPA (Single Page Application), simula il cambiamento di pagina e gestisce la navigazione nella nostra applicazione react,
+  permette di renderizzare specifici componenti solo quando si è su un path (o URL) specifico.
+- React-Redux : libreria react che consente l'utilizzo di Redux per la gestione dello stato, fornisce l'accesso ad uno stato condiviso tra tutti i componenti dell'applicazione;
+- Redux-Persist : libreria che si occupa della persistenza dello stato dell'applicazione,ci consente di salvare lo stato dell'applicazione nella memoria locale del browser;
+- React-chartjs-2 : libreria per la creazione di grafici interattivi e dinamici. 
 
 [DigitFin Exchange Frontend Repository](https://github.com/Massimiliano2022/CAPSTONE-PROJECT-FRONTEND)
 
