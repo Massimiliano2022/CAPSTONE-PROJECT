@@ -1,11 +1,11 @@
-# CAPSTONE-PROJECT
-# DigitFin Exchange 
+# DigitFin Exchange Back-End
 Applicazione di scambio di criptovalute che consente agli utenti di acquistare, vendere e monitorare il valore delle criptovalute. L'applicazione offre una varietà di funzionalità avanzate e strumenti per consentire agli utenti di gestire le proprie operazioni in modo efficace.
+
+# Descrizione
+Questa repository contiene il codice sorgente scritto in Java per il back-end dell'applicazione, fornisce gli endpoint necessari per consentire una comunicazione fluida tra il client e il server.
+
 # Tecnologie utilizzate
 
-Back-end:
-
-Java 
 - lombok : libreria che fornisce un set di annotazioni per eliminare il boilerplate code (codice ripetitivo) all'interno delle classi Java. Con Lombok, possiamo ridurre notevolmente la quantità di codice necessario per definire getter, setter, costruttori e altro, permettendoci di concentrarci maggiormente sulla logica dell'applicazione.
 - Spring Starter Data JPA : libreria Spring Boot per semplificare l'interazione con il database utilizzando la tecnologia Java Persistence API (JPA).
   Permette di mappare le entità dell'applicazione (classi Java) alle  tabelle del database, consentendo così di interagire con il database utilizzando oggetti Java 
@@ -16,8 +16,35 @@ Java
 - JSON Web Token (JWT) : In combinazione con Spring Starter Security, le librerie relative ai JSON Web Token (JWT) ci permettono di gestire in modo efficace la sicurezza dell'applicazione. Il meccanismo JWT offre una codifica sicura per le informazioni sensibili degli utenti, come le password, garantendo al contempo la possibilità di verificare l'autenticità degli utenti per gli accessi futuri.
 - Spring Starter Validation : libreria per la validazione dei dati gestiti dall'applicazione ,grazie a una serie di annotazioni, possiamo verificare la correttezza dei dati di input e garantire che siano conformi ai nostri requisiti, migliorando l'affidabilità e la stabilità dell'applicazione.
 
-Postgres come database per la persistenza dei dati
+Postgres come database per la persistenza dei dati.
 
+# Configurazione 
+
+Requisiti :
+
+1. Java Development Kit (JDK) - Java Temurin v17;
+2. Postgres SQL;
+3. [La tua API Key personale di CoinMarketCap](https://pro.coinmarketcap.com/signup)
+
+Clona questo progetto attraverso il comando :
+
+>git clone https://github.com/Massimiliano2022/CAPSTONE-PROJECT-BACKEND
+
+Crea un file denominato env.properties nella root principale con le seguenti proprietà:
+
+>PG_PW=//password accesso postgres
+
+>PG_USERNAME=//user postgres
+
+>PG_DB=//nome DB
+
+>JWT_SECRET=//stringa casuale - segreto per la generazione token JWT
+
+>JWT_EXPIRATION=//durata token
+
+>CMC_PRO_API_KEY=//API Key personale di CoinMarketCap
+
+Per la parte frontend dell'applicazione, il repository associato è disponibile al seguente link: 
 [DigitFin Exchange Frontend Repository](https://github.com/Massimiliano2022/CAPSTONE-PROJECT-FRONTEND)
 
 # Funzionalità
