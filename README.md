@@ -3,18 +3,6 @@
 Applicazione di scambio di criptovalute che consente agli utenti di acquistare, vendere e monitorare il valore delle criptovalute. L'applicazione offre una varietà di funzionalità avanzate e strumenti per consentire agli utenti di gestire le proprie operazioni in modo efficace.
 # Tecnologie utilizzate
 
-Front-end:
-
-- React : libreria per lo sviluppo front-end più utilizzata. Permette di creare app veloci, scalabili e mantenibili nel tempo.
-- React-Bootstrap : libreria react costruita sulla base del framework Css Bootstrap;
-- React-Router-Dom : libreria per SPA (Single Page Application), simula il cambiamento di pagina e gestisce la navigazione nella nostra applicazione react,
-  permette di renderizzare specifici componenti solo quando si è su un path (o URL) specifico.
-- React-Redux : libreria react che consente l'utilizzo di Redux per la gestione dello stato, fornisce l'accesso ad uno stato condiviso tra tutti i componenti dell'applicazione;
-- Redux-Persist : libreria che si occupa della persistenza dello stato dell'applicazione,ci consente di salvare lo stato dell'applicazione nella memoria locale del browser;
-- React-chartjs-2 : libreria per la creazione di grafici interattivi e dinamici. 
-
-[DigitFin Exchange Frontend Repository](https://github.com/Massimiliano2022/CAPSTONE-PROJECT-FRONTEND)
-
 Back-end:
 
 Java 
@@ -29,6 +17,8 @@ Java
 - Spring Starter Validation : libreria per la validazione dei dati gestiti dall'applicazione ,grazie a una serie di annotazioni, possiamo verificare la correttezza dei dati di input e garantire che siano conformi ai nostri requisiti, migliorando l'affidabilità e la stabilità dell'applicazione.
 
 Postgres come database per la persistenza dei dati
+
+[DigitFin Exchange Frontend Repository](https://github.com/Massimiliano2022/CAPSTONE-PROJECT-FRONTEND)
 
 # Funzionalità
 L'applicazione offre diverse funzionalità per gli utenti:
