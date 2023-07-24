@@ -18,10 +18,15 @@ Front-end:
 Back-end:
 
 Java 
-- Spring Boot;
-- Spring Data JPA;
-- Spring Security Web;
-- JSON Web Token (JWT);
+- lombok : libreria che fornisce un set di annotazioni per eliminare il boilerplate code (codice ripetitivo) all'interno delle classi Java. Con Lombok, possiamo ridurre notevolmente la quantità di codice necessario per definire getter, setter, costruttori e altro, permettendoci di concentrarci maggiormente sulla logica dell'applicazione.
+- Spring Starter Data JPA : libreria Spring Boot per semplificare l'interazione con il database utilizzando la tecnologia Java Persistence API (JPA).
+  Permette di mappare le entità dell'applicazione (classi Java) alle  tabelle del database, consentendo così di interagire con il database utilizzando oggetti Java 
+  anziché scrivere query SQL direttamente;
+- PostgreSQL : grazie a questo driver, possiamo stabilire una connessione sicura e affidabile tra l'applicazione e il database, permettendo di archiviare e recuperare i dati in modo efficiente;
+- Spring Starter Web : libreria Spring Boot per la creazione di un web service in grado di gestire le richieste HTTP (GET/POST/PUT/DELETE);
+- Spring Starter Security : libreria Spring Boot per la gestione della sicurezza della nostra applicazione. Offre una configurazione di sicurezza di base che può essere personalizzata per le esigenze specifiche della nostra applicazione. Possiamo definire regole di accesso, autenticazione e autorizzazione per proteggere i dati e garantire un ambiente sicuro per gli utenti.;
+- JSON Web Token (JWT) : In combinazione con Spring Starter Security, le librerie relative ai JSON Web Token (JWT) ci permettono di gestire in modo efficace la sicurezza dell'applicazione. Il meccanismo JWT offre una codifica sicura per le informazioni sensibili degli utenti, come le password, garantendo al contempo la possibilità di verificare l'autenticità degli utenti per gli accessi futuri.
+- Spring Starter Validation : libreria per la validazione dei dati gestiti dall'applicazione ,grazie a una serie di annotazioni, possiamo verificare la correttezza dei dati di input e garantire che siano conformi ai nostri requisiti, migliorando l'affidabilità e la stabilità dell'applicazione.
 
 Postgres come database per la persistenza dei dati
 
